@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
-  <head>
-    <meta content="text/html;charset=UTF-8" http-equiv="content-type" />
-    <title>
-      markdown
-    </title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <meta content="NOINDEX, NOFOLLOW, NOARCHIVE" name="ROBOTS" />
-  </head>
-  <body>
-    <div class="container">
-        <script>
-          if (window.MozWebSocket) {
-            window.WebSocket = window.MozWebSocket;
-          }
+    <head>
+        <meta charset="UTF-8"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>Markdown</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <meta content="NOINDEX, NOFOLLOW, NOARCHIVE" name="ROBOTS" />
+    </head>
+    <body>
+        <div class="container">
+            <script>
+if (window.MozWebSocket) {
+    window.WebSocket = window.MozWebSocket;
+}
 
-          function openConnection() {
-            conn = new WebSocket('ws://127.0.0.1:9998');
-            document.body.innerHTML = 'Connecting...'
-            conn.onopen = function () {
-              document.body.innerHTML = 'Connected.'
-            };
+function openConnection() {
+    conn = new WebSocket('ws://127.0.0.1:9998');
+    document.body.innerHTML = 'Connecting...'
+        conn.onopen = function () {
+            document.body.innerHTML = 'Connected.'
+        };
 
-            conn.onmessage = function (event) {
-              var html = JSON.parse(event.data);
-              var i,s='';
-              for(i=0;i<20;i++) s+='<br/>';
-              document.body.innerHTML = html+s;
-              MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-            };
+    conn.onmessage = function (event) {
+        var html = JSON.parse(event.data);
+        var i,s='';
+        for(i=0;i<20;i++) s+='<br/>';
+        document.body.innerHTML = html+s;
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    };
 
-            conn.onclose = function (event) {
-              document.body.innerHTML = 'Disconnected.'
-            };
-          }
+    conn.onclose = function (event) {
+        document.body.innerHTML = 'Disconnected.'
+    };
+}
 
-          setTimeout(function () {
-            openConnection();
-          }, 1000);
-        </script>
+setTimeout(function () {
+    openConnection();
+}, 1000);
+            </script>
         <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]], processEscapes: true } });
+MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]], processEscapes: true } });
         </script>
         <script type="text/javascript"
-          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+                src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
-    </div>
-  </body>
+        </div>
+    </body>
 </html>

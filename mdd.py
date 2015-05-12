@@ -8,7 +8,8 @@ from bottle import *
 from markdown import markdown
 from ws import *
 
-markdown_options = ['extra', 'codehilite']
+# see https://pythonhosted.org/Markdown/extensions/index.html
+markdown_options = ['extra', 'codehilite', 'sane_lists' ]
 client = None
 
 

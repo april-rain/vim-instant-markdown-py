@@ -26,7 +26,7 @@ function openConnection() {
     conn.onmessage = function (event) {
         var html = JSON.parse(event.data);
         var i,s='';
-        for(i=0;i<20;i++) s+='<br/>';
+        //for(i=0;i<20;i++) s+='<br/>';
         document.body.innerHTML = html+s;
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     };
